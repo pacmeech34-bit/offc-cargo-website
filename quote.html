@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Request a cargo transportation quote from OFFC Cargo LLC.">
+  <title>Request a Quote | OFFC Cargo LLC</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .quote-form {
+      max-width: 720px;
+      margin: 30px auto;
+      padding: 25px;
+      background: #fff;
+      border-radius: 12px;
+      color: #14243a;
+    }
+    .quote-form label {
+      display: block;
+      font-weight: 700;
+      margin: 16px 0 6px;
+    }
+    .quote-form input,
+    .quote-form textarea,
+    .quote-form select {
+      display: block;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 13px;
+      border: 1px solid #aab3c0;
+      border-radius: 6px;
+      font: inherit;
+    }
+    .quote-form textarea { min-height: 110px; }
+    .quote-form button { margin-top: 22px; }
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <a class="logo" href="index.html">OFFC <span>CARGO</span> LLC</a>
+    <nav aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="about.html">About Us</a>
+      <a href="services.html">Services</a>
+      <a class="active" href="quote.html">Request a Quote</a>
+      <a href="contact.html">Contact Us</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <p>OFFC CARGO LLC</p>
+      <h1>Request a Freight Quote</h1>
+      <p>Tell us about your shipment and transportation needs. We look forward to discussing your delivery requirements.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2>Shipment Information</h2>
+      <p>Complete the form below to prepare your quote request by email.</p>
+
+      <form class="quote-form" id="quoteForm">
+        <label for="customer">Full Name *</label>
+        <input id="customer" name="customer" required>
+
+        <label for="company">Company Name</label>
+        <input id="company" name="company">
+
+        <label for="email">Email Address *</label>
+        <input id="email" type="email" name="email" required>
+
+        <label for="phone">Phone Number *</label>
+        <input id="phone" type="tel" name="phone" required>
+
+        <label for="pickup">Pickup City and State *</label>
+        <input id="pickup" name="pickup" required>
+
+        <label for="delivery">Delivery City and State *</label>
+        <input id="delivery" name="delivery" required>
+
+        <label for="date">Requested Pickup Date</label>
+        <input id="date" type="date" name="date">
+
+        <label for="service">Service Requested</label>
+        <select id="service" name="service">
+          <option>Cargo Van Transportation</option>
+          <option>Business Delivery</option>
+          <option>Scheduled Delivery</option>
+          <option>Dedicated Transportation</option>
+          <option>Other / Not Sure</option>
+        </select>
+
+        <label for="cargo">Cargo Description, Weight, and Dimensions *</label>
+        <textarea id="cargo" name="cargo" required></textarea>
+
+        <label for="notes">Additional Shipment Details</label>
+        <textarea id="notes" name="notes"></textarea>
+
+        <button class="btn" type="submit">Prepare Quote Email</button>
+        <p><small>Submitting opens your email application. You must send the email to complete your request.</small></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2026 OFFC Cargo LLC. All rights reserved.</p>
+</footer>
+
+<script>
+  document.getElementById("quoteForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    const data = new FormData(this);
+    const fields = [
+      ["Name", "customer"],
+      ["Company", "company"],
+      ["Email", "email"],
+      ["Phone", "phone"],
+      ["Pickup", "pickup"],
+      ["Delivery", "delivery"],
+      ["Pickup Date", "date"],
+      ["Service", "service"],
+      ["Cargo", "cargo"],
+      ["Additional Details", "notes"]
+    ];
+    const body = fields.map(([label, key]) =>
+      label + ": " + (data.get(key) || "Not provided")
+    ).join("\n");
+
+    const subject = encodeURIComponent("Freight Quote Request - OFFC Cargo LLC");
+    const message = encodeURIComponent(body);
+    window.location.href =
+      "mailto:admin@offccargollc.com?subject=" +
+      subject + "&body=" + message;
+  });
+</script>
+</body>
+</html>

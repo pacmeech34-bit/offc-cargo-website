@@ -1,0 +1,118 @@
+:root {
+  --navy: #101e32;
+  --blue: #203a5b;
+  --gold: #d8ac57;
+  --light: #f4f7fb;
+  --text: #233248;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: var(--light);
+  line-height: 1.65;
+}
+h1, h2, h3 { line-height: 1.2; }
+a { color: #174e87; }
+header {
+  background: var(--navy);
+  color: white;
+  box-shadow: 0 3px 12px #0002;
+}
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.logo {
+  color: white;
+  font-size: 22px;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: 1px;
+}
+.logo span { color: var(--gold); }
+nav {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+nav a:hover, nav a.active { color: var(--gold); }
+main { min-height: 60vh; }
+section { padding: 60px 24px; }
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.hero {
+  padding: 90px 24px;
+  color: white;
+  background: linear-gradient(135deg, #101e32, #244b75);
+}
+.hero h1 {
+  font-size: clamp(34px, 6vw, 62px);
+  max-width: 850px;
+  margin: 15px 0 24px;
+}
+.hero p {
+  max-width: 680px;
+  font-size: 19px;
+}
+.btn, .button, button[type="submit"] {
+  display: inline-block;
+  padding: 13px 22px;
+  margin: 8px 8px 8px 0;
+  border: 0;
+  border-radius: 7px;
+  background: var(--gold);
+  color: var(--navy);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+}
+.btn:hover, .button:hover { filter: brightness(1.08); }
+.grid, .cards, .services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 24px;
+}
+.card, .service-card {
+  background: white;
+  border-radius: 12px;
+  padding: 26px;
+  box-shadow: 0 5px 22px #10203812;
+}
+input, textarea, select {
+  width: 100%;
+  max-width: 100%;
+  padding: 13px;
+  margin: 7px 0 18px;
+  border: 1px solid #bac6d3;
+  border-radius: 7px;
+  font: inherit;
+}
+footer {
+  padding: 32px 24px;
+  background: var(--navy);
+  color: white;
+  text-align: center;
+}
+footer a { color: var(--gold); }
+@media (max-width: 650px) {
+  .nav { flex-direction: column; align-items: flex-start; }
+  nav { gap: 12px 18px; }
+  section { padding: 42px 18px; }
+  .hero { padding: 65px 18px; }
+}
